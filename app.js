@@ -185,31 +185,38 @@ async function requestXrSession(mode) {
   }
 
   const sessionMode = xrModes[mode];
+  let requestedSession = null;
 
   try {
-    const session = await navigator.xr.requestSession(sessionMode, {
+    requestedSession = await navigator.xr.requestSession(sessionMode, {
       optionalFeatures: ["local-floor", "bounded-floor", "hand-tracking"],
     });
-    activeXrSession = session;
 
-    await prepareXrRenderer(session);
+    await prepareXrRenderer(requestedSession);
 
     const preferredSpace = mode === "vr" ? "local-floor" : "local";
-    xrReferenceSpace = await session.requestReferenceSpace(preferredSpace).catch(() => (
-      session.requestReferenceSpace("local")
+    xrReferenceSpace = await requestedSession.requestReferenceSpace(preferredSpace).catch(() => (
+      requestedSession.requestReferenceSpace("local")
     ));
 
+    activeXrSession = requestedSession;
     statusText.textContent = `${mode.toUpperCase()} session active.`;
     xrNote.textContent = "Use your device controls to exit the immersive session.";
-    session.requestAnimationFrame(drawXrFrame);
+    requestedSession.requestAnimationFrame(drawXrFrame);
 
-    session.addEventListener("end", () => {
+    requestedSession.addEventListener("end", () => {
       activeXrSession = null;
       xrReferenceSpace = null;
       statusText.textContent = "WebXR session ended.";
       xrNote.textContent = "Choose a mode to launch the showcase again.";
     });
   } catch (error) {
+    if (requestedSession) {
+      requestedSession.end().catch(() => undefined);
+      activeXrSession = null;
+      xrReferenceSpace = null;
+    }
+
     statusText.textContent = `Unable to start ${mode.toUpperCase()} right now.`;
     xrNote.textContent = error instanceof Error ? error.message : "The browser blocked the WebXR session request.";
   }

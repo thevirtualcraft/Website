@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#05060a" />
+    <title>The Virtual Craft — Immersive content studio</title>
+    <meta
+      name="description"
+      content="The Virtual Craft is an immersive content studio crafting WebXR, VR and AR experiences that you can step into directly from your browser."
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="The Virtual Craft — Immersive content studio" />
+    <meta
+      property="og:description"
+      content="WebXR, VR and AR experiences you can step into from any browser."
+    />
+    <meta property="og:url" content="https://thevirtualcraft.com/" />
+    <meta property="og:image" content="./assets/og-image.svg" />
+
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb--a" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb--b" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb--c" aria-hidden="true"></div>
+
+    <header class="site-header" data-reveal>
+      <a href="/" class="brand" aria-label="The Virtual Craft home">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28">
+            <defs>
+              <linearGradient id="bg-grad" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stop-color="#7c5cff" />
+                <stop offset="1" stop-color="#23e0c4" />
+              </linearGradient>
+            </defs>
+            <path
+              fill="url(#bg-grad)"
+              d="M16 1.5 30.5 10v12L16 30.5 1.5 22V10L16 1.5Zm0 4.4L5.6 12.1v7.8L16 26.1l10.4-6.2v-7.8L16 5.9Zm0 5 6.2 3.7v3.8L16 21.7l-6.2-3.7v-3.8L16 10.3Z"
+            />
+          </svg>
+        </span>
+        <span class="brand__text">
+          <span class="brand__name">The Virtual Craft</span>
+          <span class="brand__tag">immersive studio</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#xr">WebXR</a>
+        <a href="#services">Services</a>
+        <a href="#studio">Studio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn btn--ghost nav__cta" href="./xr.html">
+        <span class="btn__dot" aria-hidden="true"></span>
+        Enter WebXR
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <div id="mobile-nav" class="mobile-nav" hidden>
+      <a href="#work">Work</a>
+      <a href="#xr">WebXR</a>
+      <a href="#services">Services</a>
+      <a href="#studio">Studio</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn--primary" href="./xr.html">Enter WebXR</a>
+    </div>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__copy" data-reveal>
+          <span class="eyebrow">
+            <span class="eyebrow__dot"></span>
+            Immersive content studio · est. 2019
+          </span>
+          <h1 id="hero-title" class="display">
+            We craft worlds you
+            <span class="grad-text">step into.</span>
+          </h1>
+          <p class="lede">
+            The Virtual Craft is a studio building WebXR, VR and AR experiences for brands,
+            museums and creators — viewable on a phone, a laptop, or a headset, directly from a
+            browser.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="./xr.html">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M3 7.5A2.5 2.5 0 0 1 5.5 5h13A2.5 2.5 0 0 1 21 7.5v9a2.5 2.5 0 0 1-2.5 2.5H15l-1.2-1.6a2 2 0 0 0-3.6 0L9 19H5.5A2.5 2.5 0 0 1 3 16.5v-9Zm5.5 6a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5Zm7 0a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5Z"
+                />
+              </svg>
+              Launch the demo
+            </a>
+            <a class="btn btn--ghost" href="#work">
+              See selected work
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                <path fill="currentColor" d="M5 12h12.17l-4.58-4.59L14 6l7 7-7 7-1.41-1.41L17.17 14H5v-2Z" />
+              </svg>
+            </a>
+          </div>
+
+          <ul class="hero__stats" aria-label="Studio stats">
+            <li>
+              <span class="stat__num">120+</span>
+              <span class="stat__label">experiences shipped</span>
+            </li>
+            <li>
+              <span class="stat__num">42</span>
+              <span class="stat__label">museums &amp; brands</span>
+            </li>
+            <li>
+              <span class="stat__num">9</span>
+              <span class="stat__label">awards &amp; nominations</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero__stage" data-reveal>
+          <div class="stage-frame">
+            <div class="stage-chrome">
+              <span class="dot dot--r"></span>
+              <span class="dot dot--y"></span>
+              <span class="dot dot--g"></span>
+              <span class="stage-url">thevirtualcraft.com / live</span>
+            </div>
+            <canvas id="hero-canvas" aria-hidden="true"></canvas>
+            <div class="stage-overlay">
+              <span class="badge badge--live">
+                <span class="badge__pulse"></span>
+                WebXR · live
+              </span>
+              <a class="stage-link" href="./xr.html">
+                Open immersive view →
+              </a>
+            </div>
+          </div>
+          <div class="stage-meta">
+            <span>three.js · A-Frame · WebGPU-ready</span>
+            <span>60fps · cross-device</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- MARQUEE -->
+      <section class="marquee" aria-label="Trusted by">
+        <div class="marquee__track">
+          <span>NATIONAL MUSEUM</span><span>·</span>
+          <span>ATLAS RECORDS</span><span>·</span>
+          <span>NORDIC ARCH</span><span>·</span>
+          <span>STUDIO HORIZON</span><span>·</span>
+          <span>METRO TRANSIT</span><span>·</span>
+          <span>OBSERVATORY 9</span><span>·</span>
+          <span>KAIROS LABS</span><span>·</span>
+          <span>NATIONAL MUSEUM</span><span>·</span>
+          <span>ATLAS RECORDS</span><span>·</span>
+          <span>NORDIC ARCH</span><span>·</span>
+          <span>STUDIO HORIZON</span><span>·</span>
+          <span>METRO TRANSIT</span><span>·</span>
+          <span>OBSERVATORY 9</span><span>·</span>
+          <span>KAIROS LABS</span><span>·</span>
+        </div>
+      </section>
+
+      <!-- WORK -->
+      <section id="work" class="section" aria-labelledby="work-title">
+        <header class="section__head" data-reveal>
+          <span class="eyebrow">Selected work</span>
+          <h2 id="work-title" class="h2">
+            Worlds we’ve <span class="grad-text">built</span>
+          </h2>
+          <p class="section__sub">
+            Each piece runs entirely in a browser — no app store, no install. Tap the headset icon
+            to drop into VR, or just look around in 3D.
+          </p>
+        </header>
+
+        <ul class="cards" data-reveal>
+          <li class="card card--lg">
+            <div class="card__media card__media--aurora">
+              <span class="card__tag">VR · museum</span>
+            </div>
+            <div class="card__body">
+              <h3>Aurora Atrium</h3>
+              <p>
+                A drifting hall of light installations for the National Museum’s late-night program.
+                Six rooms, spatial audio, headset-optional.
+              </p>
+              <div class="card__meta">
+                <span>WebXR</span><span>·</span><span>spatial audio</span><span>·</span>
+                <span>2025</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="card">
+            <div class="card__media card__media--reef">
+              <span class="card__tag">AR · brand</span>
+            </div>
+            <div class="card__body">
+              <h3>Reef Drift</h3>
+              <p>A WebAR coral garden you can plant on your desk for Atlas Records’ new EP.</p>
+              <div class="card__meta">
+                <span>AR</span><span>·</span><span>iOS · Android</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="card">
+            <div class="card__media card__media--orbital">
+              <span class="card__tag">VR · concert</span>
+            </div>
+            <div class="card__body">
+              <h3>Orbital 9</h3>
+              <p>A live-streamed concert venue in zero-g with synced lighting and crowd presence.</p>
+              <div class="card__meta">
+                <span>WebXR</span><span>·</span><span>live</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="card">
+            <div class="card__media card__media--atlas">
+              <span class="card__tag">3D · architecture</span>
+            </div>
+            <div class="card__body">
+              <h3>Atlas Pavilion</h3>
+              <p>An interactive walk-through for Nordic Arch — sketch to scaled VR in eight weeks.</p>
+              <div class="card__meta">
+                <span>WebXR</span><span>·</span><span>case study</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="card">
+            <div class="card__media card__media--kairos">
+              <span class="card__tag">XR · training</span>
+            </div>
+            <div class="card__body">
+              <h3>Kairos Field Kit</h3>
+              <p>Hands-on safety training that ships as a single URL to any Quest in the field.</p>
+              <div class="card__meta">
+                <span>VR</span><span>·</span><span>multiplayer</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- WEBXR FEATURE -->
+      <section id="xr" class="section section--xr" aria-labelledby="xr-title">
+        <div class="xr-grid">
+          <div class="xr-copy" data-reveal>
+            <span class="eyebrow">
+              <span class="eyebrow__dot eyebrow__dot--alt"></span>
+              WebXR, by default
+            </span>
+            <h2 id="xr-title" class="h2">
+              One link. <span class="grad-text">Any device.</span>
+            </h2>
+            <p class="section__sub">
+              Every project we ship runs in WebXR. That means a phone visitor sees a 3D scene, a
+              laptop visitor uses orbit controls, and a headset visitor lands in full VR — from the
+              same URL.
+            </p>
+
+            <ul class="feature-list">
+              <li>
+                <strong>Headset-ready.</strong> Quest 3, Vision Pro, Pico, Index — all supported via
+                the open WebXR Device API.
+              </li>
+              <li>
+                <strong>No install.</strong> No app stores, no review queues, no friction. Share a
+                link, get an audience.
+              </li>
+              <li>
+                <strong>Built to last.</strong> Open standards (glTF, WebXR, three.js, A-Frame) mean
+                your experience won’t be deprecated next year.
+              </li>
+            </ul>
+
+            <div class="xr-actions">
+              <a class="btn btn--primary" href="./xr.html">Try the live scene</a>
+              <a class="btn btn--ghost" href="#contact">Bring your project</a>
+            </div>
+          </div>
+
+          <div class="xr-stage" data-reveal>
+            <div class="device-mock">
+              <div class="device-mock__screen">
+                <div class="device-mock__scene">
+                  <div class="orbit orbit--1"><span></span></div>
+                  <div class="orbit orbit--2"><span></span></div>
+                  <div class="orbit orbit--3"><span></span></div>
+                  <div class="planet"></div>
+                </div>
+                <span class="device-mock__chip">VR · 90Hz</span>
+              </div>
+              <div class="device-mock__strap"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services" class="section" aria-labelledby="services-title">
+        <header class="section__head" data-reveal>
+          <span class="eyebrow">Services</span>
+          <h2 id="services-title" class="h2">
+            Strategy, craft, <span class="grad-text">and pixels.</span>
+          </h2>
+        </header>
+
+        <ul class="services" data-reveal>
+          <li class="service">
+            <span class="service__num">01</span>
+            <h3>Immersive concept</h3>
+            <p>
+              Workshops, story design and a tested prototype in weeks, not quarters. We help you
+              answer “what is this experience for?”.
+            </p>
+          </li>
+          <li class="service">
+            <span class="service__num">02</span>
+            <h3>WebXR engineering</h3>
+            <p>
+              Hand-built three.js / A-Frame scenes tuned for mobile, desktop and headset. Multiplayer,
+              spatial audio, hand-tracking — all in a browser.
+            </p>
+          </li>
+          <li class="service">
+            <span class="service__num">03</span>
+            <h3>3D &amp; motion</h3>
+            <p>
+              In-house artists handle modelling, look-dev and animation, with glTF pipelines built
+              for performance from day one.
+            </p>
+          </li>
+          <li class="service">
+            <span class="service__num">04</span>
+            <h3>Launch &amp; care</h3>
+            <p>
+              Analytics, A/B testing, and a measured rollout. We stay with you after launch to keep
+              the experience sharp.
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- STUDIO -->
+      <section id="studio" class="section section--studio" aria-labelledby="studio-title">
+        <div class="studio-grid">
+          <div data-reveal>
+            <span class="eyebrow">The studio</span>
+            <h2 id="studio-title" class="h2">
+              A small team, <span class="grad-text">deep craft.</span>
+            </h2>
+            <p class="section__sub">
+              We’re a tight crew of engineers, 3D artists and designers based across Lisbon, Berlin
+              and Toronto. We pair with brands and institutions who care about details — the kind
+              that survive a headset close-up.
+            </p>
+            <div class="studio-meta">
+              <div>
+                <span class="studio-meta__num">12</span>
+                <span class="studio-meta__label">crafters</span>
+              </div>
+              <div>
+                <span class="studio-meta__num">3</span>
+                <span class="studio-meta__label">cities</span>
+              </div>
+              <div>
+                <span class="studio-meta__num">100%</span>
+                <span class="studio-meta__label">browser-first</span>
+              </div>
+            </div>
+          </div>
+
+          <figure class="studio-quote" data-reveal>
+            <blockquote>
+              “The Virtual Craft turned a 200-year-old archive into a place visitors actually want
+              to wander. Their WebXR build runs flawlessly on every device our guests bring.”
+            </blockquote>
+            <figcaption>
+              <span class="avatar" aria-hidden="true">M</span>
+              <span>
+                <strong>Marta Kovač</strong>
+                <span>Head of Digital, National Museum</span>
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section section--contact" aria-labelledby="contact-title">
+        <div class="contact-card" data-reveal>
+          <div>
+            <span class="eyebrow">Start a project</span>
+            <h2 id="contact-title" class="h2">
+              Have something you want <span class="grad-text">people to step into?</span>
+            </h2>
+            <p class="section__sub">
+              Tell us about it — concept, deadline, whatever you’ve got. We reply within two
+              working days.
+            </p>
+          </div>
+
+          <form class="contact-form" novalidate onsubmit="return window.TVC?.submitContact(event)">
+            <label>
+              <span>Your name</span>
+              <input type="text" name="name" required autocomplete="name" />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" required autocomplete="email" />
+            </label>
+            <label class="contact-form__full">
+              <span>About the project</span>
+              <textarea name="message" rows="4" required></textarea>
+            </label>
+            <div class="contact-form__row">
+              <button class="btn btn--primary" type="submit">Send brief</button>
+              <a class="contact-direct" href="mailto:hello@thevirtualcraft.com">
+                or hello@thevirtualcraft.com
+              </a>
+            </div>
+            <p class="contact-form__status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__top">
+        <a href="/" class="brand">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="24" height="24">
+              <use href="#bg-grad" />
+              <path
+                fill="url(#bg-grad)"
+                d="M16 1.5 30.5 10v12L16 30.5 1.5 22V10L16 1.5Zm0 4.4L5.6 12.1v7.8L16 26.1l10.4-6.2v-7.8L16 5.9Zm0 5 6.2 3.7v3.8L16 21.7l-6.2-3.7v-3.8L16 10.3Z"
+              />
+            </svg>
+          </span>
+          <span class="brand__text">
+            <span class="brand__name">The Virtual Craft</span>
+          </span>
+        </a>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="#work">Work</a>
+          <a href="./xr.html">WebXR</a>
+          <a href="#services">Services</a>
+          <a href="#studio">Studio</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="site-footer__bottom">
+        <span>© <span id="year"></span> The Virtual Craft. All rights reserved.</span>
+        <span>Crafted with WebXR, three.js &amp; A-Frame.</span>
+      </div>
+    </footer>
+
+    <script src="./main.js" defer></script>
+  </body>
+</html>

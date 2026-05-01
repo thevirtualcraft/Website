@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The Virtual Craft — Immersive WebXR experiences. Step into worlds crafted for VR, AR, and the open web." />
+  <title>The Virtual Craft — Immersive WebXR Experiences</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════ 3D CANVAS BACKGROUND ═══════════════════════ -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ═══════════════════════ CURSOR GLOW ═══════════════════════ -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="20,2 38,12 38,28 20,38 2,28 2,12" stroke="url(#logoGrad)" stroke-width="1.5" fill="none"/>
+          <polygon points="20,9 31,15.5 31,24.5 20,31 9,24.5 9,15.5" fill="url(#logoGradFill)" opacity="0.2"/>
+          <polygon points="20,9 31,15.5 31,24.5 20,31 9,24.5 9,15.5" stroke="url(#logoGrad)" stroke-width="1" fill="none"/>
+          <circle cx="20" cy="20" r="3" fill="url(#logoGrad)"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="2" y1="2" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#a78bfa"/>
+              <stop offset="100%" stop-color="#22d3ee"/>
+            </linearGradient>
+            <linearGradient id="logoGradFill" x1="2" y1="2" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#a78bfa"/>
+              <stop offset="100%" stop-color="#22d3ee"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>TheVirtualCraft</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#experiences">Experiences</a></li>
+        <li><a href="#webxr">WebXR</a></li>
+        <li><a href="#showcase">Showcase</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-ghost" id="enterVRBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8a2 2 0 012-2h16a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8z"/><circle cx="8.5" cy="12" r="1.5"/><circle cx="15.5" cy="12" r="1.5"/><path d="M10 12h4"/></svg>
+          Enter VR
+        </button>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#experiences">Experiences</a>
+      <a href="#webxr">WebXR</a>
+      <a href="#showcase">Showcase</a>
+      <a href="#about">About</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════ HERO ═══════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        WebXR Powered
+      </div>
+      <h1 class="hero-title">
+        <span class="gradient-text">Immersive</span>
+        <br/>Experiences
+        <br/>Beyond Reality
+      </h1>
+      <p class="hero-subtitle">
+        Step into handcrafted virtual worlds built for the open web.
+        No app required — just your browser and a sense of wonder.
+      </p>
+      <div class="hero-cta">
+        <button class="btn-primary" id="launchXRBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+          Launch XR Experience
+        </button>
+        <a href="#showcase" class="btn-secondary">
+          View Showcase
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-value">50+</span>
+          <span class="stat-label">XR Scenes</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">WebXR</span>
+          <span class="stat-label">Native API</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">6DOF</span>
+          <span class="stat-label">Tracking</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hologram-ring ring-1"></div>
+      <div class="hologram-ring ring-2"></div>
+      <div class="hologram-ring ring-3"></div>
+      <div class="hologram-card">
+        <canvas id="xr-preview-canvas"></canvas>
+        <div class="hologram-overlay">
+          <div class="holo-scan-line"></div>
+        </div>
+        <div class="hologram-info">
+          <span class="holo-badge">LIVE PREVIEW</span>
+          <span class="holo-status">
+            <span class="status-dot"></span>
+            XR Ready
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FEATURES / XR CAPABILITIES ═══════════════════════ -->
+  <section class="section features" id="webxr">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-tag">Technology</span>
+        <h2>Built on the <span class="gradient-text">WebXR API</span></h2>
+        <p>Open-standard immersive technology that runs natively in your browser — no plugins, no downloads.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card" data-tilt>
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="url(#f1)" stroke-width="1.5"/><path d="M14 24a10 10 0 0120 0" stroke="url(#f1)" stroke-width="1.5" stroke-linecap="round"/><path d="M24 14v20M14 24h20" stroke="url(#f1)" stroke-width="1.5" stroke-linecap="round"/><defs><linearGradient id="f1" x1="4" y1="4" x2="44" y2="44"><stop stop-color="#a78bfa"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs></svg>
+          </div>
+          <h3>Immersive VR</h3>
+          <p>Full stereoscopic rendering with 6DOF head tracking, hand controllers, and haptic feedback support across all major headsets.</p>
+          <div class="feature-tags">
+            <span>Quest 3</span>
+            <span>Vision Pro</span>
+            <span>PSVR2</span>
+          </div>
+        </div>
+
+        <div class="feature-card" data-tilt>
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="4" y="4" width="40" height="40" rx="8" stroke="url(#f2)" stroke-width="1.5"/><path d="M14 24l6 6 14-14" stroke="url(#f2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="f2" x1="4" y1="4" x2="44" y2="44"><stop stop-color="#a78bfa"/><stop offset="1" stop-color="#34d399"/></linearGradient></defs></svg>
+          </div>
+          <h3>Mixed Reality AR</h3>
+          <p>Anchor virtual objects to the real world. Our AR scenes use hit-testing and plane detection to place content precisely in your space.</p>
+          <div class="feature-tags">
+            <span>Plane Detection</span>
+            <span>Hit Testing</span>
+            <span>Anchors</span>
+          </div>
+        </div>
+
+        <div class="feature-card" data-tilt>
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M24 4l8 14H16L24 4z" stroke="url(#f3)" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 34l8-14h16l8 14H8z" stroke="url(#f3)" stroke-width="1.5" stroke-linejoin="round"/><defs><linearGradient id="f3" x1="4" y1="4" x2="44" y2="44"><stop stop-color="#f472b6"/><stop offset="1" stop-color="#a78bfa"/></linearGradient></defs></svg>
+          </div>
+          <h3>3D Scene Streaming</h3>
+          <p>Progressive asset loading, compressed GLTF models, and adaptive quality ensure buttery-smooth 90fps performance in any headset.</p>
+          <div class="feature-tags">
+            <span>GLTF 2.0</span>
+            <span>Draco</span>
+            <span>KTX2</span>
+          </div>
+        </div>
+
+        <div class="feature-card" data-tilt>
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="8" stroke="url(#f4)" stroke-width="1.5"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M9.17 9.17l4.24 4.24M34.6 34.6l4.24 4.24M9.17 38.83l4.24-4.24M34.6 13.4l4.24-4.24" stroke="url(#f4)" stroke-width="1.5" stroke-linecap="round"/><defs><linearGradient id="f4" x1="4" y1="4" x2="44" y2="44"><stop stop-color="#22d3ee"/><stop offset="1" stop-color="#34d399"/></linearGradient></defs></svg>
+          </div>
+          <h3>Spatial Audio</h3>
+          <p>Web Audio API positional sound with HRTF spatialization creates realistic 3D soundscapes that respond to your head movement.</p>
+          <div class="feature-tags">
+            <span>HRTF</span>
+            <span>Reverb</span>
+            <span>Occlusion</span>
+          </div>
+        </div>
+
+        <div class="feature-card" data-tilt>
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M8 36V20l16-12 16 12v16" stroke="url(#f5)" stroke-width="1.5" stroke-linejoin="round"/><rect x="18" y="28" width="12" height="8" rx="1" stroke="url(#f5)" stroke-width="1.5"/><defs><linearGradient id="f5" x1="4" y1="4" x2="44" y2="44"><stop stop-color="#fb923c"/><stop offset="1" stop-color="#f472b6"/></linearGradient></defs></svg>
+          </div>
+          <h3>Multi-user Spaces</h3>
+          <p>Shared XR rooms powered by WebRTC and WebSockets. See other avatars, collaborate in 3D space, and attend live virtual events.</p>
+          <div class="feature-tags">
+            <span>WebRTC</span>
+            <span>Avatars</span>
+            <span>Live Events</span>
+          </div>
+        </div>
+
+        <div class="feature-card" data-tilt>
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="4" y="14" width="40" height="26" rx="4" stroke="url(#f6)" stroke-width="1.5"/><path d="M16 14V10a4 4 0 018 0v4" stroke="url(#f6)" stroke-width="1.5" stroke-linecap="round"/><circle cx="24" cy="27" r="4" stroke="url(#f6)" stroke-width="1.5"/><defs><linearGradient id="f6" x1="4" y1="4" x2="44" y2="44"><stop stop-color="#34d399"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs></svg>
+          </div>
+          <h3>Hand Tracking</h3>
+          <p>Native WebXR hand tracking API with articulated joints, pinch gestures, and custom interaction primitives — no controllers needed.</p>
+          <div class="feature-tags">
+            <span>25 Joints</span>
+            <span>Pinch</span>
+            <span>Gestures</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SHOWCASE ═══════════════════════ -->
+  <section class="section showcase" id="showcase">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-tag">Portfolio</span>
+        <h2>XR <span class="gradient-text">Showcase</span></h2>
+        <p>Explore our collection of immersive experiences — from photorealistic environments to abstract interactive art.</p>
+      </div>
+
+      <div class="showcase-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="vr">VR Worlds</button>
+        <button class="filter-btn" data-filter="ar">AR Layers</button>
+        <button class="filter-btn" data-filter="interactive">Interactive</button>
+        <button class="filter-btn" data-filter="social">Social XR</button>
+      </div>
+
+      <div class="showcase-grid" id="showcaseGrid">
+
+        <div class="showcase-card large" data-category="vr">
+          <div class="card-media">
+            <canvas class="scene-canvas" data-scene="nebula"></canvas>
+            <div class="card-gradient"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-tag vr">VR World</span>
+              <span class="card-duration">~8 min</span>
+            </div>
+            <h3>Nebula Drift</h3>
+            <p>Float through a procedurally generated nebula. Reactive to your gaze and hand movements.</p>
+            <div class="card-actions">
+              <button class="btn-launch" data-experience="nebula">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5,3 19,12 5,21"/></svg>
+                Launch in VR
+              </button>
+              <button class="btn-icon" title="Preview in browser">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase-card" data-category="ar">
+          <div class="card-media">
+            <canvas class="scene-canvas" data-scene="crystal"></canvas>
+            <div class="card-gradient"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-tag ar">AR Layer</span>
+              <span class="card-duration">~3 min</span>
+            </div>
+            <h3>Crystal Garden</h3>
+            <p>Grow a crystal garden on any flat surface using AR plane detection.</p>
+            <div class="card-actions">
+              <button class="btn-launch" data-experience="crystal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5,3 19,12 5,21"/></svg>
+                Open in AR
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase-card" data-category="interactive">
+          <div class="card-media">
+            <canvas class="scene-canvas" data-scene="particles"></canvas>
+            <div class="card-gradient"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-tag interactive">Interactive</span>
+              <span class="card-duration">∞</span>
+            </div>
+            <h3>Particle Forge</h3>
+            <p>Sculpt and shape millions of particles with your hands. A meditative creative tool.</p>
+            <div class="card-actions">
+              <button class="btn-launch" data-experience="particles">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5,3 19,12 5,21"/></svg>
+                Explore
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase-card" data-category="social">
+          <div class="card-media">
+            <canvas class="scene-canvas" data-scene="gallery"></canvas>
+            <div class="card-gradient"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-tag social">Social XR</span>
+              <span class="card-duration">Live</span>
+            </div>
+            <h3>Virtual Gallery</h3>
+            <p>A shared social space featuring rotating artist exhibitions in a photorealistic museum.</p>
+            <div class="card-actions">
+              <button class="btn-launch" data-experience="gallery">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5,3 19,12 5,21"/></svg>
+                Join Space
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase-card" data-category="vr">
+          <div class="card-media">
+            <canvas class="scene-canvas" data-scene="ocean"></canvas>
+            <div class="card-gradient"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-tag vr">VR World</span>
+              <span class="card-duration">~12 min</span>
+            </div>
+            <h3>Deep Ocean</h3>
+            <p>Dive into photorealistic ocean depths with volumetric light rays and marine life.</p>
+            <div class="card-actions">
+              <button class="btn-launch" data-experience="ocean">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5,3 19,12 5,21"/></svg>
+                Dive In
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ XR EXPERIENCE SECTION ═══════════════════════ -->
+  <section class="section xr-section" id="experiences">
+    <div class="section-inner">
+      <div class="xr-split">
+        <div class="xr-text">
+          <span class="section-tag">How It Works</span>
+          <h2>One Click to <span class="gradient-text">Another World</span></h2>
+          <p class="xr-lead">The WebXR Device API lets us deliver full VR and AR experiences right in your browser. No app store. No downloads. Just presence.</p>
+
+          <div class="xr-steps">
+            <div class="xr-step">
+              <div class="step-num">01</div>
+              <div class="step-content">
+                <h4>Open on any device</h4>
+                <p>Works on Meta Quest browser, Apple Vision, Chrome for Android, and desktop with a WebXR-capable device.</p>
+              </div>
+            </div>
+            <div class="xr-step">
+              <div class="step-num">02</div>
+              <div class="step-content">
+                <h4>Click "Enter VR / AR"</h4>
+                <p>Your browser requests XR session access. Grant permission and your headset or phone enters immersive mode instantly.</p>
+              </div>
+            </div>
+            <div class="xr-step">
+              <div class="step-num">03</div>
+              <div class="step-content">
+                <h4>Interact naturally</h4>
+                <p>Use hand tracking, controllers, or gaze-based input. Your actions shape the experience in real-time.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="xr-compat">
+            <h5>Compatible Devices</h5>
+            <div class="compat-list">
+              <div class="compat-item">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                Meta Quest 2/3/Pro
+              </div>
+              <div class="compat-item">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                Apple Vision Pro
+              </div>
+              <div class="compat-item">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                Android + Chrome
+              </div>
+              <div class="compat-item">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                HTC Vive / Index
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="xr-demo">
+          <div class="demo-device">
+            <div class="device-screen">
+              <canvas id="demoCanvas"></canvas>
+              <div class="device-overlay">
+                <div class="device-ui">
+                  <div class="device-pill">WebXR Session Active</div>
+                  <div class="device-fps">90 fps</div>
+                </div>
+              </div>
+            </div>
+            <div class="device-body"></div>
+          </div>
+
+          <div class="xr-badges">
+            <div class="xr-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              Open Standard
+            </div>
+            <div class="xr-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Privacy First
+            </div>
+            <div class="xr-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              60–120 FPS
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+  <section class="section about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="section-tag">About Us</span>
+          <h2>Crafting the <span class="gradient-text">Spatial Web</span></h2>
+          <p>The Virtual Craft is a studio specializing in browser-native immersive experiences. We believe the future of the web is spatial — where content isn't just viewed, but inhabited.</p>
+          <p>Our team combines deep expertise in WebXR, real-time graphics, and interaction design to build experiences that push the boundary of what's possible in a browser tab.</p>
+          <div class="about-cta">
+            <a href="mailto:hello@thevirtualcraft.com" class="btn-primary">
+              Start a Project
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="about-stats">
+          <div class="about-stat-card">
+            <span class="about-stat-value gradient-text">50+</span>
+            <span class="about-stat-label">Experiences Shipped</span>
+          </div>
+          <div class="about-stat-card">
+            <span class="about-stat-value gradient-text">1M+</span>
+            <span class="about-stat-label">XR Sessions Served</span>
+          </div>
+          <div class="about-stat-card">
+            <span class="about-stat-value gradient-text">8</span>
+            <span class="about-stat-label">Platform Awards</span>
+          </div>
+          <div class="about-stat-card">
+            <span class="about-stat-value gradient-text">W3C</span>
+            <span class="about-stat-label">Working Group Member</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ CTA BANNER ═══════════════════════ -->
+  <section class="cta-banner">
+    <div class="cta-inner">
+      <div class="cta-glow"></div>
+      <h2>Ready to step <span class="gradient-text">beyond the screen</span>?</h2>
+      <p>Launch your first WebXR experience in seconds — no headset required to start.</p>
+      <div class="cta-actions">
+        <button class="btn-primary large" id="ctaLaunchBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 8v8M8 12h8"/></svg>
+          Enter the Experience
+        </button>
+        <a href="#showcase" class="btn-ghost large">Browse Showcase</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">
+          <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="20,2 38,12 38,28 20,38 2,28 2,12" stroke="url(#footerLogoGrad)" stroke-width="1.5" fill="none"/>
+            <polygon points="20,9 31,15.5 31,24.5 20,31 9,24.5 9,15.5" fill="url(#footerLogoGrad)" opacity="0.2"/>
+            <circle cx="20" cy="20" r="3" fill="url(#footerLogoGrad)"/>
+            <defs>
+              <linearGradient id="footerLogoGrad" x1="2" y1="2" x2="38" y2="38">
+                <stop offset="0%" stop-color="#a78bfa"/>
+                <stop offset="100%" stop-color="#22d3ee"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span>TheVirtualCraft</span>
+        </a>
+        <p>Crafting immersive experiences for the spatial web.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Twitter/X">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Experiences</h5>
+          <a href="#">VR Worlds</a>
+          <a href="#">AR Layers</a>
+          <a href="#">Interactive Art</a>
+          <a href="#">Social Spaces</a>
+        </div>
+        <div class="footer-col">
+          <h5>Technology</h5>
+          <a href="#">WebXR API</a>
+          <a href="#">Three.js</a>
+          <a href="#">Hand Tracking</a>
+          <a href="#">Spatial Audio</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="#">About</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+          <a href="mailto:hello@thevirtualcraft.com">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 TheVirtualCraft. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════ XR OVERLAY ═══════════════════════ -->
+  <div class="xr-overlay" id="xrOverlay">
+    <div class="xr-modal">
+      <button class="xr-modal-close" id="xrModalClose">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="xr-modal-header">
+        <div class="xr-modal-icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M4 16a4 4 0 014-4h32a4 4 0 014 4v16a4 4 0 01-4 4H4a4 4 0 01-4-4V16z" stroke="url(#xrGrad)" stroke-width="1.5"/><circle cx="14" cy="24" r="5" stroke="url(#xrGrad)" stroke-width="1.5"/><circle cx="34" cy="24" r="5" stroke="url(#xrGrad)" stroke-width="1.5"/><path d="M19 24h10" stroke="url(#xrGrad)" stroke-width="1.5"/><defs><linearGradient id="xrGrad" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#a78bfa"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs></svg>
+        </div>
+        <h3>Launch XR Experience</h3>
+        <p id="xrModalDesc">Preparing immersive session…</p>
+      </div>
+      <div class="xr-status" id="xrStatus">
+        <div class="xr-status-item" id="statusDevice">
+          <svg viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="8"/></svg>
+          Detecting device…
+        </div>
+        <div class="xr-status-item" id="statusSupport">
+          <svg viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="8"/></svg>
+          Checking WebXR support…
+        </div>
+        <div class="xr-status-item" id="statusReady">
+          <svg viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="8"/></svg>
+          Ready to launch
+        </div>
+      </div>
+      <div class="xr-modal-actions">
+        <button class="btn-primary large" id="confirmXRBtn">
+          Enter XR
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button class="btn-ghost" id="cancelXRBtn">Cancel</button>
+      </div>
+      <p class="xr-fallback" id="xrFallback"></p>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

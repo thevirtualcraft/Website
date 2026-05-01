@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="The Virtual Craft builds immersive WebXR, interactive 3D, and spatial storytelling experiences for brands, products, and destinations."
+    />
+    <title>The Virtual Craft | Immersive Content Showcases</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="#home" aria-label="The Virtual Craft homepage">
+          <span class="brand-mark"></span>
+          <span class="brand-text">
+            <strong>The Virtual Craft</strong>
+            <small>Immersive content studio</small>
+          </span>
+        </a>
+
+        <nav class="nav">
+          <a href="#services">Services</a>
+          <a href="#showcase">Showcase</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a class="button button-secondary" href="#contact">Book a discovery call</a>
+      </header>
+
+      <main id="home">
+        <section class="hero section">
+          <div class="hero-copy" data-reveal="up">
+            <span class="eyebrow">WebXR experiences for modern brands</span>
+            <h1>
+              Showcase immersive content that audiences can
+              <span>explore, feel, and step inside.</span>
+            </h1>
+            <p class="lead">
+              The Virtual Craft creates spatial storytelling experiences, 3D
+              product showcases, and WebXR-ready environments that transform
+              passive browsing into unforgettable interaction.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#showcase">Explore XR showcase</a>
+              <a class="button button-ghost" href="#services">See how it works</a>
+            </div>
+
+            <div class="hero-metrics">
+              <article>
+                <strong>WebXR-first</strong>
+                <span>VR-ready experiences for compatible browsers and headsets</span>
+              </article>
+              <article>
+                <strong>3D storytelling</strong>
+                <span>Interactive launches, virtual tours, and product narratives</span>
+              </article>
+              <article>
+                <strong>Launch faster</strong>
+                <span>Concept-to-showcase flows designed for teams that move fast</span>
+              </article>
+            </div>
+          </div>
+
+          <div class="hero-panel" data-reveal="left">
+            <div class="hero-card hero-card-primary">
+              <p class="label">Immersive pipeline</p>
+              <div class="hero-card-grid">
+                <article>
+                  <span>01</span>
+                  <h2>Capture</h2>
+                  <p>3D assets, environments, and product moments built for presence.</p>
+                </article>
+                <article>
+                  <span>02</span>
+                  <h2>Compose</h2>
+                  <p>Visual narratives that guide users across screens and spaces.</p>
+                </article>
+                <article>
+                  <span>03</span>
+                  <h2>Launch</h2>
+                  <p>WebXR delivery for frictionless exploration on the open web.</p>
+                </article>
+              </div>
+            </div>
+
+            <div class="hero-card hero-card-secondary">
+              <p class="label">Ideal for</p>
+              <ul>
+                <li>Virtual product reveals</li>
+                <li>Immersive property walkthroughs</li>
+                <li>Experiential campaign microsites</li>
+                <li>Interactive learning environments</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="services" class="section section-grid">
+          <div class="section-heading" data-reveal="up">
+            <span class="eyebrow">What we build</span>
+            <h2>Immersive content systems that feel premium from the first second.</h2>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card" data-reveal="up">
+              <div class="feature-icon">XR</div>
+              <h3>WebXR Showrooms</h3>
+              <p>
+                Product worlds and interactive destinations that can scale from
+                desktop previews to headset-ready VR sessions.
+              </p>
+            </article>
+            <article class="feature-card" data-reveal="up">
+              <div class="feature-icon">3D</div>
+              <h3>Spatial Product Stories</h3>
+              <p>
+                Turn product details into immersive narratives with guided
+                sequences, hotspots, and cinematic motion.
+              </p>
+            </article>
+            <article class="feature-card" data-reveal="up">
+              <div class="feature-icon">AR</div>
+              <h3>Interactive AR Concepts</h3>
+              <p>
+                Prototype augmented experiences that extend your brand into
+                physical space with modern browser capabilities.
+              </p>
+            </article>
+            <article class="feature-card" data-reveal="up">
+              <div class="feature-icon">UI</div>
+              <h3>Launch-Ready Experiences</h3>
+              <p>
+                Responsive marketing layers, conversion paths, and polished UI
+                systems built around immersive interaction.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="showcase" class="section showcase-section">
+          <div class="showcase-copy" data-reveal="up">
+            <span class="eyebrow">Interactive showcase</span>
+            <h2>Preview a living XR scene right in the browser.</h2>
+            <p>
+              This demo space uses a real-time 3D scene with WebXR support. On
+              compatible devices, visitors can launch VR mode and experience the
+              environment in a more immersive way.
+            </p>
+
+            <div class="showcase-actions">
+              <button id="enter-xr" class="button button-primary" type="button">
+                Enter VR experience
+              </button>
+              <span id="xr-status" class="status-pill">Checking WebXR support...</span>
+            </div>
+
+            <div class="mode-pills" aria-label="Scene presets">
+              <button class="mode-pill is-active" data-scene-mode="pulse" type="button">
+                Pulse
+              </button>
+              <button class="mode-pill" data-scene-mode="aurora" type="button">
+                Aurora
+              </button>
+              <button class="mode-pill" data-scene-mode="signal" type="button">
+                Signal
+              </button>
+            </div>
+          </div>
+
+          <div class="showcase-panel" data-reveal="left">
+            <div id="scene-shell" class="scene-shell">
+              <div class="scene-overlay">
+                <p>Realtime spatial preview</p>
+                <strong>Modern immersive content starts here.</strong>
+              </div>
+              <div id="scene-container" class="scene-container" aria-hidden="true"></div>
+              <div id="vr-button-slot" class="vr-button-slot" aria-hidden="true"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section narrative-strip">
+          <div class="narrative-card" data-reveal="up">
+            <span class="eyebrow">Experience design</span>
+            <h2>Built to guide attention, not just display pixels.</h2>
+          </div>
+          <div class="narrative-points">
+            <article data-reveal="up">
+              <strong>Clear entry points</strong>
+              <p>Visitors understand the value immediately and know where to go next.</p>
+            </article>
+            <article data-reveal="up">
+              <strong>Motion with purpose</strong>
+              <p>Every transition supports story, focus, and emotional depth.</p>
+            </article>
+            <article data-reveal="up">
+              <strong>Immersive escalation</strong>
+              <p>Users move naturally from page content into 3D and WebXR moments.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="process" class="section process-section">
+          <div class="section-heading" data-reveal="up">
+            <span class="eyebrow">Our process</span>
+            <h2>From strategy to immersive deployment.</h2>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-item" data-reveal="up">
+              <span>01</span>
+              <div>
+                <h3>Story architecture</h3>
+                <p>
+                  We define the user journey, content hierarchy, and immersive
+                  moments that will create the strongest impact.
+                </p>
+              </div>
+            </article>
+            <article class="timeline-item" data-reveal="up">
+              <span>02</span>
+              <div>
+                <h3>Spatial prototyping</h3>
+                <p>
+                  We shape scenes, interactions, and interface patterns around
+                  performance and clarity.
+                </p>
+              </div>
+            </article>
+            <article class="timeline-item" data-reveal="up">
+              <span>03</span>
+              <div>
+                <h3>Launch and evolve</h3>
+                <p>
+                  We deliver responsive immersive pages that can grow into
+                  campaigns, showcases, and XR activations.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="contact" class="section contact-section">
+          <div class="contact-card" data-reveal="up">
+            <span class="eyebrow">Let’s build your next immersive launch</span>
+            <h2>The website should feel like the experience itself.</h2>
+            <p>
+              The Virtual Craft helps brands and teams turn immersive ideas into
+              polished interactive experiences ready for the modern web.
+            </p>
+            <div class="contact-actions">
+              <a class="button button-primary" href="mailto:hello@thevirtualcraft.com">
+                hello@thevirtualcraft.com
+              </a>
+              <a class="button button-secondary" href="#home">Back to top</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>&copy; <span id="year"></span> The Virtual Craft. Crafted for immersive storytelling.</p>
+      </footer>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/three@0.164.1/examples/js/controls/OrbitControls.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/three@0.164.1/examples/js/webxr/VRButton.js"
+      defer
+    ></script>
+    <script src="./app.js" defer></script>
+  </body>
+</html>

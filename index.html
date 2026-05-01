@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Virtual Craft | Immersive Content Studio</title>
+    <meta
+      name="description"
+      content="The Virtual Craft is an immersive content studio for WebXR showcases, virtual product stories, and interactive brand experiences."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="aurora aurora-left" aria-hidden="true"></div>
+    <div class="aurora aurora-right" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top">
+        <span class="brand-mark">TV</span>
+        <span class="brand-text">The Virtual Craft</span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#showcase">Showcase</a>
+        <a href="#xr-lab">WebXR Lab</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="button button-ghost" href="#xr-lab">Try XR Preview</a>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <p class="eyebrow">Immersive Content Studio</p>
+        <h1>We craft digital experiences that users can walk through, not just scroll.</h1>
+        <p class="lead">
+          The Virtual Craft helps brands showcase products and stories in 3D spaces with
+          interactive WebXR-ready experiences for modern browsers and headsets.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#showcase">Explore Experiences</a>
+          <a class="button button-secondary" href="#xr-lab">Launch XR Demo</a>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Studio metrics">
+        <article class="stat-card">
+          <p class="stat-value">40+</p>
+          <p class="stat-label">Immersive launches</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-value">3D + XR</p>
+          <p class="stat-label">End-to-end production</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-value">Global</p>
+          <p class="stat-label">Browser-first access</p>
+        </article>
+      </section>
+
+      <section class="content-section" id="showcase">
+        <div class="section-heading">
+          <p class="eyebrow">What We Build</p>
+          <h2>Immersive showcases designed for discovery, education, and conversion.</h2>
+        </div>
+
+        <div class="showcase-grid">
+          <article class="showcase-card">
+            <h3>Virtual Product Galleries</h3>
+            <p>
+              Walk-through product spaces with narrative hotspots, animation reveals, and guided
+              interactions that make complex products easy to understand.
+            </p>
+          </article>
+          <article class="showcase-card">
+            <h3>XR Storytelling Experiences</h3>
+            <p>
+              Blend audio, motion, and 3D environments to create high-retention stories users can
+              experience in browser, mobile, and headset contexts.
+            </p>
+          </article>
+          <article class="showcase-card">
+            <h3>Immersive Event Spaces</h3>
+            <p>
+              Design branded spaces for product launches, training sessions, and interactive demos
+              where participants can explore in real time.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section xr-lab" id="xr-lab">
+        <div class="section-heading">
+          <p class="eyebrow">WebXR Integration</p>
+          <h2>Step inside a live immersive preview directly from this page.</h2>
+          <p class="section-copy">
+            This browser demo uses WebXR and a lightweight Three.js scene to showcase how immersive
+            content can be embedded in your website experience.
+          </p>
+        </div>
+
+        <div class="xr-panel">
+          <div class="xr-header">
+            <p class="xr-title">Immersive Preview Lab</p>
+            <p id="xr-status" class="xr-status" role="status" aria-live="polite">
+              Detecting WebXR support...
+            </p>
+          </div>
+          <div id="xr-canvas-wrapper" class="xr-canvas-wrapper">
+            <noscript>
+              JavaScript is required to run this interactive immersive preview.
+            </noscript>
+          </div>
+          <p class="xr-helper-text">
+            For headset mode, open this page over HTTPS in a WebXR-enabled browser and click
+            <strong>Enter VR</strong>.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section" id="contact">
+        <div class="section-heading">
+          <p class="eyebrow">Build with us</p>
+          <h2>Ready to turn your content into an immersive destination?</h2>
+        </div>
+        <a class="button button-primary" href="mailto:hello@thevirtualcraft.com">
+          hello@thevirtualcraft.com
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> The Virtual Craft. Immersive by design.</p>
+    </footer>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

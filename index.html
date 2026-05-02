@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="The Virtual Craft creates immersive WebXR, AR, VR, and spatial content for brands, learning, events, and digital showcases."
+    >
+    <title>The Virtual Craft | Immersive WebXR Experiences</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="The Virtual Craft home">
+        <span class="brand-mark">VC</span>
+        <span>The Virtual Craft</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#work">Experiences</a>
+        <a href="#webxr">WebXR</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="#webxr">Launch demo</a>
+    </header>
+
+    <main id="top">
+      <section class="hero section-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Immersive content studio</p>
+          <h1>Crafting spatial stories for the web, AR, and VR.</h1>
+          <p class="hero-intro">
+            The Virtual Craft designs WebXR-ready showcases that turn products,
+            spaces, and ideas into interactive 3D experiences anyone can open
+            from a modern browser.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#webxr">Try WebXR showcase</a>
+            <a class="button button-secondary" href="#work">Explore capabilities</a>
+          </div>
+          <dl class="hero-stats" aria-label="Studio highlights">
+            <div>
+              <dt>3D</dt>
+              <dd>interactive scenes</dd>
+            </div>
+            <div>
+              <dt>AR</dt>
+              <dd>product previews</dd>
+            </div>
+            <div>
+              <dt>VR</dt>
+              <dd>immersive tours</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero-visual" aria-label="Abstract immersive content preview">
+          <div class="orb orb-primary"></div>
+          <div class="orb orb-secondary"></div>
+          <div class="experience-frame">
+            <div class="frame-topbar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="portal-scene">
+              <div class="portal-ring"></div>
+              <div class="floating-card card-one">Spatial product</div>
+              <div class="floating-card card-two">Virtual gallery</div>
+              <div class="floating-card card-three">Live WebXR</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="logo-strip" aria-label="Experience categories">
+        <span>Brand worlds</span>
+        <span>Training simulations</span>
+        <span>Virtual galleries</span>
+        <span>Product launches</span>
+      </section>
+
+      <section id="work" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">What we showcase</p>
+          <h2>Immersive content that feels useful, not gimmicky.</h2>
+          <p>
+            Build browser-accessible experiences for audiences on phones,
+            desktops, headsets, and AR-capable devices.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="feature-card">
+            <span class="card-icon">01</span>
+            <h3>Interactive 3D showcases</h3>
+            <p>
+              Product configurators, spatial storytelling, and explorable
+              environments designed for fast loading and clear calls to action.
+            </p>
+          </article>
+          <article class="feature-card">
+            <span class="card-icon">02</span>
+            <h3>Augmented reality previews</h3>
+            <p>
+              Let visitors place objects, installations, or branded moments in
+              their own space through supported WebXR browsers.
+            </p>
+          </article>
+          <article class="feature-card">
+            <span class="card-icon">03</span>
+            <h3>Virtual reality tours</h3>
+            <p>
+              Create guided galleries, training rooms, event booths, and
+              location previews that can move from screen to headset.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="webxr" class="webxr section-grid">
+        <div>
+          <p class="eyebrow">WebXR integration</p>
+          <h2>Launch immersive content directly from the website.</h2>
+          <p>
+            This page includes a WebXR-ready launcher. Supported devices can
+            enter AR or VR, while every visitor gets a polished preview and
+            clear compatibility feedback.
+          </p>
+          <ul class="check-list">
+            <li>Detects browser support for immersive AR and VR sessions.</li>
+            <li>Uses a secure-context WebXR session request when available.</li>
+            <li>Falls back to a responsive 3D-inspired showcase on all devices.</li>
+          </ul>
+        </div>
+
+        <div class="xr-panel" aria-live="polite">
+          <div class="xr-preview">
+            <canvas id="xr-canvas"></canvas>
+            <div class="scanline"></div>
+            <div class="xr-preview-label">Live spatial preview</div>
+          </div>
+          <div class="xr-status">
+            <span class="status-dot" id="xr-status-dot"></span>
+            <span id="xr-status-text">Checking WebXR support...</span>
+          </div>
+          <div class="xr-actions">
+            <button class="button button-primary" id="enter-ar" type="button" disabled>
+              Enter AR
+            </button>
+            <button class="button button-secondary" id="enter-vr" type="button" disabled>
+              Enter VR
+            </button>
+          </div>
+          <p class="xr-note" id="xr-note">
+            WebXR requires HTTPS or localhost and a compatible browser/device.
+          </p>
+        </div>
+      </section>
+
+      <section id="process" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">How we build</p>
+          <h2>From concept to launch-ready spatial experience.</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span>01</span>
+            <h3>Map the moment</h3>
+            <p>Define the audience, platform, narrative, and the interaction that makes the experience worth entering.</p>
+          </div>
+          <div class="timeline-item">
+            <span>02</span>
+            <h3>Prototype the space</h3>
+            <p>Turn content into a performant 3D flow with clear navigation, accessibility, and fallback paths.</p>
+          </div>
+          <div class="timeline-item">
+            <span>03</span>
+            <h3>Launch and learn</h3>
+            <p>Deploy to the web, validate across devices, and refine the experience with analytics-informed improvements.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div>
+          <p class="eyebrow">Start the build</p>
+          <h2>Bring your next immersive showcase to the browser.</h2>
+          <p>
+            Whether you need a product reveal, virtual gallery, AR preview, or
+            headset-ready tour, The Virtual Craft can shape it for the spatial web.
+          </p>
+        </div>
+        <a class="button button-primary" href="mailto:hello@thevirtualcraft.com">
+          hello@thevirtualcraft.com
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>&copy; 2026 The Virtual Craft</span>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

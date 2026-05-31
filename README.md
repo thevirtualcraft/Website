@@ -11,14 +11,20 @@ Modern, immersive website for [thevirtualcraft.com](https://thevirtualcraft.com)
 - **Icons:** Lucide React
 - **Language:** TypeScript
 
-## Getting Started
+## Getting Started (local)
+
+Clone the repo and run it on your machine — no Cloud Agent or remote VM needed.
 
 ```bash
+git clone https://github.com/thevirtualcraft/website.git
+cd website
 npm install
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+Open the project in the [Cursor desktop app](https://cursor.com) to use Agent/Composer locally. See `AGENTS.md` for agent instructions.
 
 ## Features
 

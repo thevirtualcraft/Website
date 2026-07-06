@@ -38,6 +38,11 @@ const config: Config = {
         'glow': 'glow 2s ease-in-out infinite alternate',
         'slide-up': 'slideUp 0.6s ease-out',
         'fade-in': 'fadeIn 0.8s ease-out',
+        'aurora': 'aurora 18s ease-in-out infinite',
+        'marquee': 'marquee 32s linear infinite',
+        'gradient-x': 'gradientX 6s ease infinite',
+        'spin-slow': 'spin 24s linear infinite',
+        'dash': 'dash 3s ease-in-out infinite',
       },
       keyframes: {
         float: {
@@ -55,6 +60,22 @@ const config: Config = {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
+        },
+        aurora: {
+          '0%, 100%': { transform: 'translate3d(0, 0, 0) scale(1)', opacity: '0.5' },
+          '50%': { transform: 'translate3d(4%, -3%, 0) scale(1.15)', opacity: '0.8' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        gradientX: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+        dash: {
+          '0%': { strokeDashoffset: '160' },
+          '100%': { strokeDashoffset: '0' },
         },
       },
       backgroundImage: {

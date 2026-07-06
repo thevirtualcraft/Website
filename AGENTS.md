@@ -13,15 +13,28 @@ Until one of those branches is merged into `main`, there is nothing to install, 
 build, or run from `main` itself. If you need to work on the site, first get the app
 onto your branch (merge a website branch into `main`, or branch from a website branch).
 
-### Running the website (once the app is present)
+### Services
 
-The project is frontend-only (no backend, no database, no test suite). Uses npm
-(a `package-lock.json` is committed).
+This product has exactly **one service** — there is no backend, database, API route
+(`src/app/api/*` does not exist), queue, or separate worker process. WebXR/3D is all
+client-side (React Three Fiber + `@react-three/xr`).
 
-- Install: `npm install`
-- Dev server: `npm run dev` (Next.js, http://localhost:3000)
-- Production build: `npm run build`
-- Lint: `npm run lint`
+#### Service: `thevirtualcraft-website` (Next.js 14 frontend)
+
+The single web service. Frontend-only, npm-based (a `package-lock.json` is committed —
+use npm, not pnpm/yarn). Default port **3000**.
+
+| Task | Command | Notes |
+|---|---|---|
+| Install deps | `npm install` | ~489 packages; run from repo root |
+| Dev server | `npm run dev` | Hot-reload; serves http://localhost:3000 |
+| Type check | `npx tsc --noEmit` | Strict mode; also run implicitly by `next build` |
+| Lint | `npm run lint` | `next lint` → `eslint-config-next` (core-web-vitals) |
+| Production build | `npm run build` | Static prerender of `/`; output to `.next/` |
+| Production server | `npm run start` | Requires a prior `npm run build`; `-- -p <port>` to change port |
+
+No automated test suite is configured (`npm test` is not defined). Verify changes by
+running the dev server and exercising the UI in a browser.
 
 ### Notes / gotchas
 
@@ -29,5 +42,9 @@ The project is frontend-only (no backend, no database, no test suite). Uses npm
 - ESLint is v8 with `eslint-config-next@14` (pinned for Next.js 14 compatibility).
 - The homepage renders WebGL 3D scenes via React Three Fiber; give it a couple of
   seconds to hydrate before interacting.
+- `next.config.js` sets `transpilePackages: ['three']`; keep this when touching the
+  build config or the Three.js imports will fail to compile.
+- `npm run start` needs a completed `npm run build` first, and cannot share a port with
+  a running dev server — pass `-- -p 3100` (or similar) to run both side by side.
 - The update script installs node dependencies only when a `package.json` exists at the
   repo root, so it is a safe no-op while `main` is still empty.
